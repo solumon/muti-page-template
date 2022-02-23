@@ -1,11 +1,19 @@
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 const cwd = process.cwd();
 module.exports = {
     entry: './src/index.js',
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                loader: "babel-loader",
+                exclude: /node_modules/
+            }
+        ]
+    },
     output: {
-        filename: 'js/app.[contenthash:10].js',
+        filename: 'js/bundle.[contenthash:6].js',
         clean: true,
     },
     plugins: [
@@ -14,4 +22,9 @@ module.exports = {
             title: '目录'
         })
     ],
+    resolve: {
+        alias: {
+            "@": resolve(cwd, 'src')
+        }
+    }
 }
