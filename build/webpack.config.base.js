@@ -1,9 +1,33 @@
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin-webpack5');
+const glob = require('glob');
 const cwd = process.cwd();
+
+const { entry, pages } = (function () {
+    let files = glob.sync('src/pages/*/main.js')
+    const entry = {};
+    const pages = [];
+    files.forEach(item => {
+        const name = item.split('/')[2];
+        entry[name] = resolve(cwd, item);
+        const page = new HtmlWebpackPlugin({
+            filename: `${name}.html`,
+            template: resolve(cwd, `public/templates/${name}.html`),
+            chunks: [`${name}`]
+        });
+        pages.push(page);
+    })
+    return { entry, pages }
+})();
+console.log('-----------')
+console.log(pages)
 module.exports = {
-    entry: './src/main.js',
+    entry: entry,
+    output: {
+        filename: 'js/[name].js',
+        clean: true,
+    },
     module: {
         rules: [
             {
@@ -33,15 +57,8 @@ module.exports = {
             }
         ]
     },
-    output: {
-        filename: 'js/[name].js',
-        clean: true,
-    },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: 'public/index.html',
-            title: '目录'
-        }),
+        ...pages,
         new VueLoaderPlugin()
     ],
     resolve: {
