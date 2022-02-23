@@ -1,11 +1,10 @@
+import A from './js/a';
+import { add }  from './js/b';
+
 console.log('hello webpack')
 
-const prm = new Promise(resolve => {
-    setTimeout(() => {
-        resolve(100)
-    }, 5000);
+A.getPrice().then((price) => {
+    console.log('price', price)
 })
 
-prm.then((v) => {
-    console.log('log ', v)
-})
+console.log(add(1000, 2))
