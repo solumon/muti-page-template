@@ -2,6 +2,8 @@ const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin-webpack5');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 const glob = require('glob');
 
 const cwd = process.cwd();
@@ -81,6 +83,17 @@ module.exports = {
         new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
             filename: 'css/[name].[hash].[ext]',
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: resolve('./public'),
+                    to: './',
+                    globOptions: {
+                        ignore: ['**/templates/*'],
+                    },
+                },
+            ],
         }),
     ],
     resolve: {
