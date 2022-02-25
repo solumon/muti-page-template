@@ -1,7 +1,6 @@
 <template>
     <div id="app">
         <div>HELLO 目录页</div>
-
         <div class="img-test">
             <img
                 class="gif"

@@ -1,11 +1,11 @@
 <template>
-  <div
-    id="app"
-    class="a"
-    data-a="4"
-  >
-    HELLO 学习页
-  </div>
+    <div
+        id="app"
+        class="a"
+        data-a="4"
+    >
+        HELLO 学习页
+    </div>
 </template>
 
 <script>
