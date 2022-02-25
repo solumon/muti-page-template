@@ -39,9 +39,9 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-
+<style lang="scss">
 .img-test {
+    position: relative;
     display: flex;
     flex-direction: column;
     user-select: none;
@@ -67,4 +67,5 @@ export default {
         height: 400px;
     }
 }
+
 </style>

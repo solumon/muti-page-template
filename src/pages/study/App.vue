@@ -16,8 +16,8 @@ export default {
 
 <style>
 #app {
-      display: none;
-  flex-direction: column;
+    display: none;
+    flex-direction: column;
     align-items: center;
 }
 </style>
