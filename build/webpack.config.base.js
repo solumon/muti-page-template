@@ -39,18 +39,18 @@ module.exports = {
                 test: /\.css$/,
                 use: ["css-loader"],
             },
-            // {
-            //     test: /\.(png|svg|jpg|jpeg|gif)$/,
-            //     type: "asset",
-            //     parser: {
-            //         dataUrlCondition: {
-            //             maxSize: 5 * 1024
-            //         }
-            //     },
-            //     generator: {
-            //         filename: 'images/[base]'
-            //     }
-            // },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/,
+                type: "asset",
+                parser: {
+                    dataUrlCondition: {
+                        maxSize: 5 * 1024
+                    }
+                },
+                generator: {
+                    filename: 'images/[base]'
+                }
+            },
             {
                 test: /\.vue$/,
                 loader: 'vue-loader'
