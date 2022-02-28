@@ -9,7 +9,7 @@ const glob = require('glob');
 const cwd = process.cwd();
 
 const data = (() => {
-    const files = glob.sync('src/pages/*/main.js');
+    const files = glob.sync('src/pages/*/main.ts');
     const entry = {};
     const pages = [];
     files.forEach((item) => {
@@ -35,6 +35,11 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
+                exclude: /node_modules/,
+            },
+            {
+                test:/\.ts$/,
+                use: 'ts-loader',
                 exclude: /node_modules/,
             },
             {
@@ -69,7 +74,7 @@ module.exports = {
                     },
                 },
                 generator: {
-                    filename: 'media/[base]',
+                    filename: 'assets/[base]',
                 },
             },
             {
@@ -100,6 +105,6 @@ module.exports = {
         alias: {
             '@': resolve(cwd, 'src'),
         },
-        extensions: ['.js', '.vue', '.json'],
+        extensions: ['.js', 'ts', '.vue', '.json'],
     },
 };
