@@ -126,4 +126,6 @@ dist
 
 babel.config.js
 .eslintrc.js
+public
 
+**/*.d.ts

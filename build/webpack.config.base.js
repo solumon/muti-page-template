@@ -27,7 +27,7 @@ const data = (() => {
 module.exports = {
     entry: data.entry,
     output: {
-        filename: 'js/[name].js',
+        filename: 'js/[name][chunkhash:6].js',
         clean: true,
     },
     module: {
@@ -38,8 +38,11 @@ module.exports = {
                 exclude: /node_modules/,
             },
             {
-                test:/\.ts$/,
-                use: 'ts-loader',
+                test: /\.ts$/,
+                use: [
+                    'babel-loader',
+                    'ts-loader',
+                ],
                 exclude: /node_modules/,
             },
             {
@@ -87,7 +90,7 @@ module.exports = {
         ...data.pages,
         new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
-            filename: 'css/[name].[hash].[ext]',
+            filename: 'css/[name].[chunkhash:6].css',
         }),
         new CopyWebpackPlugin({
             patterns: [

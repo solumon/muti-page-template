@@ -1,5 +1,15 @@
 module.exports = {
     root: true,
+    parser: "vue-eslint-parser",
+    parserOptions: {
+        ecmaVersion: 2021,
+        parser: '@typescript-eslint/parser',
+        sourceType: 'module',
+        ecmaFeatures: {
+            jsx: true,
+            tsx: true
+        }
+    },
     env: {
         browser: true,
         es2021: true,
@@ -9,10 +19,6 @@ module.exports = {
         'airbnb-base',
         'plugin:vue/recommended',
     ],
-    parserOptions: {
-        ecmaVersion: 13,
-        sourceType: 'module',
-    },
     plugins: ['vue'],
     rules: {
         'indent': ['error', 4], // 缩进统一使用
