@@ -8,7 +8,8 @@
     "build:dev": "webpack -c build/webpack.config.dev.js",
     "eslint:quiet": "eslint src/**/*.{ts,vue} --quiet",
     "eslint:fix": "eslint src/**/*.{ts,vue} --fix",
-    "stylelint": "stylelint \"src/**/*.(scss|css|vue)\" --fix"
+    "stylelint": "stylelint \"src/**/*.(scss|css|vue)\" --fix",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
