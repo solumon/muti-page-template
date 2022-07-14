@@ -1,41 +1,41 @@
 <template>
-  <div id="app">
-    <div>HELLO 目录页</div>
-    <div class="img-test">
-      <img
-        class="gif"
-        src="./assets/test.gif"
-        alt=""
-      >
-      <img
-        class="jpg"
-        src="./assets/test.jpg"
-        alt=""
-      >
-      <img
-        class="png"
-        src="./assets/test.png"
-        alt=""
-      >
+    <div id="app">
+        <div>HELLO 目录页</div>
+        <div class="img-test">
+            <img
+                class="gif"
+                src="./assets/test.gif"
+                alt=""
+            >
+            <img
+                class="jpg"
+                src="./assets/test.jpg"
+                alt=""
+            >
+            <img
+                class="png"
+                src="./assets/test.png"
+                alt=""
+            >
+        </div>
+        <div class="media-test">
+            <audio
+                class="mp3"
+                src="./assets/test.mp3"
+                controls
+            />
+            <video
+                src="./assets/test.mp4"
+                controls
+            />
+        </div>
     </div>
-    <div class="media-test">
-      <audio
-        class="mp3"
-        src="./assets/test.mp3"
-        controls
-      />
-      <video
-        src="./assets/test.mp4"
-        controls
-      />
-    </div>
-  </div>
 </template>
 
 <script>
 export default {
-  name: 'App',
-};
+    name: 'App'
+}
 </script>
 
 <style lang="scss">
