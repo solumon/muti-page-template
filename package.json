@@ -9,7 +9,8 @@
     "eslint:quiet": "eslint src/**/*.{ts,vue} --quiet",
     "eslint:fix": "eslint src/**/*.{ts,vue} --fix",
     "stylelint": "stylelint \"src/**/*.(scss|css|vue)\" --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postinstall": "node ./pre/index.js"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,7 @@
     "glob": "^7.2.0",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^7.0.4",
+    "inquirer": "^8.0.0",
     "lint-staged": "^12.3.4",
     "mini-css-extract-plugin": "^2.5.3",
     "post-loader": "^2.0.0",
