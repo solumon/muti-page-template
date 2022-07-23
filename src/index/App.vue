@@ -24,17 +24,30 @@
                 src="./assets/test.mp3"
                 controls
             />
-            <video
-                src="./assets/test.mp4"
+            <audio
                 controls
-            />
+                :src="src"
+            >
+                <video
+                    src="./assets/test.mp4"
+                    controls
+                />
+            </audio>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'App'
+    name: 'App',
+    computed: {
+        src() {
+            return './8A6800CDGB2358645XXDFH/media/test.mp3'
+        }
+    },
+    mounted() {
+        // console.log('页面创建了')
+    }
 }
 </script>
 

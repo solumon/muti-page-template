@@ -9,15 +9,17 @@ const glob = require('glob')
 
 const cwd = process.cwd()
 
-const data = (() => {
-    const files = glob.sync(resolve(cwd, 'public/*.html'));
+const entry = (() => {
     const inputs = glob.sync(resolve(cwd, 'src/*/main.*s'));
-    const entry = inputs.reduce((prev, cur) => {
+    return inputs.reduce((prev, cur) => {
         const name = cur.split('/').slice(-2)[0]
         prev[name] = cur
         return prev
     }, {})
-    const pages = files.reduce((prev, cur) => {
+})()
+const pages = (() => {
+    const files = glob.sync(resolve(cwd, 'public/*.html'));
+    return files.reduce((prev, cur) => {
         const name = cur.split('/').slice(-1)[0].split('.')[0]
         const html = new HtmlWebpackPlugin({
             filename: `${name}.html`,
@@ -26,10 +28,9 @@ const data = (() => {
         })
         return [...prev, html]
     }, [])
-    return { entry, pages }
 })()
 module.exports = {
-    entry: data.entry,
+    entry,
     output: {
         filename: 'js/[name].[chunkhash:6].js',
         clean: true
@@ -91,7 +92,7 @@ module.exports = {
         ]
     },
     plugins: [
-        ...data.pages,
+        ...pages,
         new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
             filename: 'css/[name].[chunkhash:6].css'
@@ -105,7 +106,7 @@ module.exports = {
                 {
                     from: resolve('./public/assets'),
                     to: './assets'
-                }
+                },
             ]
         })
     ],

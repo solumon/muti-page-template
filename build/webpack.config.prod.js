@@ -1,10 +1,10 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const fs = require('fs')
 const { merge } = require('webpack-merge')
 const ZipPlugin = require('zip-webpack-plugin')
 const base = require('./webpack.config.base')
 const { name, version } = require('../package.json')
-
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const {resolve} = require("path");
 const id = (() => {
     if (!fs.existsSync('.git/HEAD')) {
         return ''
